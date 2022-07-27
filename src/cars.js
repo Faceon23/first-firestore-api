@@ -31,3 +31,23 @@ export function createCar(req, res) {
     // send back new doc id
 }
 
+export function updateCar(req, res) {
+    let { id } = req.params
+    let carToUpdate = req.body
+}
+// update doc (id) in cars collection using req.body
+db.collection('cars')
+.doc(id)
+.update(carToUpdate)
+.then((doc) => {
+    res.status(201).send({
+        success: true,
+        id: doc.id,
+    })
+})
+
+
+// this is another way to catch errors
+function handleError(err,res) {
+    res.status(500).send(err)
+}
